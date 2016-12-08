@@ -1,12 +1,13 @@
 package ui;
 
+import javafx.application.Platform;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 public class OptionPane extends GridPane {
 
-	Button startButton = new Button("Start");
+	private Button startButton = new Button("Start");
 
 	public OptionPane() {
 		super();

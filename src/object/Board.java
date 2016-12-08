@@ -71,4 +71,16 @@ public class Board {
 	public void remove(int x,int y){
 		blocks[x][y].remove();
 	}
+	
+	public void place(Plate plate,int x,int y){
+		blocks[x][y].setPlate(plate);
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
 }

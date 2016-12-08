@@ -9,9 +9,22 @@ public class Main extends Application {
 	private Board borad = new Board();
 	public static final Main instance = new Main();
 
+	private Stage primaryStage;
+	private Scene gameScene;
+	private Scene optionScene;
+
+	private boolean isGameScreenShow;
+
 	@Override
 	public void start(Stage primaryStage) {
-		primaryStage.setScene(new Scene(new OptionPane()));
+		this.primaryStage = primaryStage;
+		optionScene = new Scene(new OptionPane());
+		GameScreen gameScreen = new GameScreen();
+		gameScreen.requestFocus();
+		gameScene = new Scene(gameScreen);
+		isGameScreenShow = false;
+
+		primaryStage.setScene(optionScene);
 		primaryStage.setTitle("Game Setting");
 		primaryStage.show();
 	}
@@ -22,5 +35,17 @@ public class Main extends Application {
 
 	public Board getBoard() {
 		return this.borad;
+	}
+
+	public void toggleScene() {
+		isGameScreenShow = !isGameScreenShow;
+		if (isGameScreenShow){
+			primaryStage.setScene(gameScene);
+			primaryStage.setTitle("Game name");
+		}
+		else{
+			primaryStage.setScene(optionScene);
+			primaryStage.setTitle("Game Setting");
+		}
 	}
 }

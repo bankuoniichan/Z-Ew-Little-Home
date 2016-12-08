@@ -11,6 +11,7 @@ public class Block {
 		this.isPastable = isPastable;
 		this.isPickable = isPickable;
 		this.isEmpty = true;
+		plate = null;
 	}
 
 	public boolean isPickable() {
@@ -27,6 +28,14 @@ public class Block {
 
 	public Plate getPlate() {
 		return plate;
+	}
+
+	public void setPlate(Plate plate) {
+		if(isPastable){
+			this.plate = plate;
+			isEmpty = false;
+			isPastable = false;
+		}
 	}
 
 	public void remove() {

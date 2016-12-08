@@ -22,9 +22,10 @@ public class NumberPlate extends Plate {
 		return this.label == otherPlate.label;
 	}
 
-	public void place(int x, int y) {
+	public void place(Board board,int x, int y) {
 		this.x = x;
 		this.y = y;
+		board.place(this, x, y);
 		work();
 	}
 
