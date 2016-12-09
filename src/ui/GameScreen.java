@@ -8,17 +8,17 @@ import javafx.scene.paint.Color;
 public class GameScreen extends StackPane {
 	private static final int CELL_SIZE = 50;
 	private int screenWidth, screenHeight;
+	private int padding = 40;
+	
 	public GameScreen() {
 		super();
 		screenWidth = calculateScreenWidth();
 		screenHeight = calculateScreenHeight();
 		Canvas background = new Canvas(screenWidth,screenHeight);
 		GraphicsContext gc = background.getGraphicsContext2D();
-		gc.setFill(Color.SADDLEBROWN);
-		gc.fillRoundRect(0, 0, screenWidth, screenHeight, 20, 20);
-		
-		gc.setFill(Color.ROSYBROWN);
-		gc.fillRoundRect(20, 20, CELL_SIZE, CELL_SIZE, 10, 10);
+		gc.setFill(Color.GAINSBORO);
+		gc.fillRect(0, 0, screenWidth, screenHeight);
+		Main.instance.getBoard().draw(gc, padding, padding);
 		
 		this.getChildren().add(background);
 		

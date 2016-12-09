@@ -1,5 +1,8 @@
 package object;
 
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 public class Block {
 	/* isPastable == isEmpty ?? */
 	protected boolean isPastable;
@@ -31,7 +34,7 @@ public class Block {
 	}
 
 	public void setPlate(Plate plate) {
-		if(isPastable){
+		if (isPastable) {
 			this.plate = plate;
 			isEmpty = false;
 			isPastable = false;
@@ -42,5 +45,12 @@ public class Block {
 		isEmpty = true;
 		plate = null;
 		isPastable = true;
+	}
+
+	public void draw(GraphicsContext gc, int x, int y) {
+		gc.setFill(Color.ROSYBROWN);
+		gc.fillRoundRect(x, y, 50, 50, 10, 10);
+		gc.setStroke(Color.BROWN);
+		gc.strokeRoundRect(x, y, 50, 50, 10, 10);
 	}
 }
