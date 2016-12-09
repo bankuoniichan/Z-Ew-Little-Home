@@ -3,7 +3,14 @@ package object;
 import java.util.ArrayList;
 import java.util.List;
 
-import ui.Main;
+import com.sun.javafx.tk.FontLoader;
+import com.sun.javafx.tk.Toolkit;
+
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 public class NumberPlate extends Plate {
 	private int label;
@@ -22,14 +29,15 @@ public class NumberPlate extends Plate {
 		return this.label == otherPlate.label;
 	}
 
-	public void place(int x, int y) {
+	public void place(Board board, int x, int y) {
 		this.x = x;
 		this.y = y;
-		work();
+		board.place(this, x, y);
+		work(board);
 	}
 
-	public void work() {
-		List<NumberPlate> nearPlates = Main.instance.getBoard().getNearPlates(this.x, this.y);
+	public void work(Board board) {
+		List<NumberPlate> nearPlates = board.getNearPlates(this.x, this.y);
 		int count = 0;
 		boolean worked = false;
 		List<Thread> listThread = new ArrayList<Thread>();
@@ -38,7 +46,7 @@ public class NumberPlate extends Plate {
 			if (this.isSameLabel(plate)) {
 				count += 1;
 				worked = true;
-				Main.instance.getBoard().remove(plate.x, plate.y);
+				board.remove(plate.x, plate.y);
 
 				listThread.add(new Thread(() -> {
 					/*
@@ -57,8 +65,22 @@ public class NumberPlate extends Plate {
 		}));
 
 		if (worked)
-			work();
+			work(board);
 
 	}
 
+	public void draw(GraphicsContext gc, int x, int y) {
+		gc.setFill(Color.WHITESMOKE);
+		gc.setStroke(Color.LAVENDER);
+		gc.fillRoundRect(x, y, 50, 50, 10, 10);
+
+		Font font = Font.font("Tahoma", FontWeight.BOLD, FontPosture.REGULAR, 30);
+		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
+		double fontWidth = fontLoader.computeStringWidth("" + label, font);
+		double fontHeight = fontLoader.getFontMetrics(font).getLineHeight();
+		gc.setFont(font);
+		gc.setFill(Color.DODGERBLUE);
+		gc.fillText("" + label, x + (50 - fontWidth) / 2, y + (110 - fontHeight) / 2);
+
+	}
 }
