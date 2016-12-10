@@ -1,13 +1,19 @@
 package ui;
 
-import javafx.application.Platform;
 import javafx.geometry.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.*;
 
 public class OptionPane extends GridPane {
 
 	private Button startButton = new Button("Start");
+	private Spinner<Integer> colSpinner;
+	private Spinner<Integer> rowSpinner;
+
+	public Button getStartButton() {
+		return startButton;
+	}
 
 	public OptionPane() {
 		super();
@@ -40,8 +46,8 @@ public class OptionPane extends GridPane {
 		rowLabel.setPrefWidth(50);
 		colLabel.setPrefWidth(50);
 
-		Spinner<Integer> rowSpinner = new Spinner<Integer>(4, 10, 5, 1);
-		Spinner<Integer> colSpinner = new Spinner<Integer>(4, 10, 5, 1);
+		rowSpinner = new Spinner<Integer>(4, 8, 5, 1);
+		colSpinner = new Spinner<Integer>(4, 15, 5, 1);
 
 		rowSpinner.setPrefWidth(90);
 		colSpinner.setPrefWidth(90);
@@ -55,11 +61,18 @@ public class OptionPane extends GridPane {
 		setting.getChildren().add(setCol);
 
 		startButton.setPrefWidth(80);
+		
 		buttonPane.setAlignment(Pos.CENTER);
 		buttonPane.getChildren().add(startButton);
 
 		this.add(setting, 0, 0, 1, 1);
 		this.add(buttonPane, 0, 1, 1, 1);
 
+	}
+	public int getColumnValue(){
+		return colSpinner.getValue();
+	}
+	public int getRowValue(){
+		return rowSpinner.getValue();
 	}
 }
