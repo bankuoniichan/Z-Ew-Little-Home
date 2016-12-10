@@ -77,6 +77,9 @@ public class NumberPlate extends Plate {
 		gc.setFill(Color.DODGERBLUE);
 		gc.fillText("" + label, x + (50 - fontWidth) / 2, y + (110 - fontHeight) / 2);
 
+		this.x = x;
+		this.y = y;
+
 	}
 
 	public static NumberPlate generateRandom() {
