@@ -25,6 +25,7 @@ public class GameScreen extends StackPane {
 	public GameScreen(Board board) {
 		super();
 		this.board = board;
+		selectField = new SelectField(board, 3);
 		screenWidth = calculateScreenWidth();
 		screenHeight = calculateScreenHeight();
 		holdingPlate = false;
@@ -65,7 +66,7 @@ public class GameScreen extends StackPane {
 					for (Block b : blocks) {
 						if (b.isMouseOver()) {
 							plate = b.getPlate();
-							b.setPlate(null);
+							b.remove();
 							break;
 						}
 					}
@@ -101,7 +102,7 @@ public class GameScreen extends StackPane {
 		board.draw(gc, padding, padding);
 
 		// 3 > next function to be dev.
-		selectField = new SelectField(board, 3);
+		
 		selectField.draw(gc, padding, padding + 20 + board.getHeight());
 	}
 }
