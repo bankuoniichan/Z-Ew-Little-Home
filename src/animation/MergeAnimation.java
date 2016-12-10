@@ -6,7 +6,6 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import object.Board;
 import object.NumberPlate;
-import object.Plate;
 import ui.GameScreen;
 
 public class MergeAnimation extends AnimationTimer {

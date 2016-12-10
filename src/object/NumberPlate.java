@@ -14,14 +14,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import ui.GameScreen;
-import ui.Main;
-import utility.DrawingUtility;
+import utility.AudioUtility;
 
 public class NumberPlate extends Plate {
 	private int label;
 	private int x, y;
 	private GraphicsContext gc;
-	private GameScreen gameScreen;
 	private static Random rand = new Random();
 
 	public NumberPlate(int number) {
@@ -52,6 +50,7 @@ public class NumberPlate extends Plate {
 		}
 
 		if (sameLabelPlates.size() > 0) {
+			AudioUtility.playMulti(sameLabelPlates.size());
 			new MergeAnimation(this, sameLabelPlates, gameScreen, gc, board, x, y).start();
 		}
 
