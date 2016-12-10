@@ -32,6 +32,7 @@ public class Main extends Application {
 		});
 		primaryStage.setTitle("Game Setting");
 		primaryStage.setResizable(false);
+		primaryStage.centerOnScreen();
 		primaryStage.show();
 	}
 
@@ -51,9 +52,11 @@ public class Main extends Application {
 			gameScene = new Scene(gameScreen);
 			primaryStage.setScene(gameScene);
 			primaryStage.setTitle("Game name");
+			primaryStage.centerOnScreen();
 		} else {
 			primaryStage.setScene(optionScene);
 			primaryStage.setTitle("Game Setting");
+			primaryStage.centerOnScreen();
 		}
 	}
 }
