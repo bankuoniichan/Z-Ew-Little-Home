@@ -98,6 +98,10 @@ public class Board {
 	public void place(Plate plate, int x, int y) {
 		blocks[x][y].setPlate(plate);
 	}
+	
+	public Plate getPlate(int x, int y) {
+		return blocks[x][y].getPlate();
+	}
 
 	public int getWidth() {
 		return width;
@@ -105,6 +109,10 @@ public class Board {
 
 	public int getHeight() {
 		return height;
+	}
+	
+	public Block[][] getBlocks(){
+		return blocks;
 	}
 
 	public void draw(GraphicsContext gc, int x, int y) {

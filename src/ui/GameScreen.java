@@ -1,10 +1,14 @@
 package ui;
 
+import animation.PlateMoveAnimation;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import object.Block;
 import object.Board;
+import object.NumberPlate;
+import object.Plate;
 import object.SelectField;
 import utility.MouseUtility;
 
@@ -16,6 +20,7 @@ public class GameScreen extends StackPane {
 	private Canvas canvas;
 	private GraphicsContext gc;
 	private boolean holdingPlate;
+	private PlateMoveAnimation holdingAnimation = null;
 
 	public GameScreen(Board board) {
 		super();
@@ -53,7 +58,39 @@ public class GameScreen extends StackPane {
 			MouseUtility.setMouseY((int) event.getY());
 		});
 		this.setOnMousePressed(event -> {
-			
+			if (!MouseUtility.isMousePressed()) {
+				if (!holdingPlate) {
+					Plate plate = null;
+					Block[] blocks = selectField.getBlocks();
+					for (Block b : blocks) {
+						if (b.isMouseOver()) {
+							plate = b.getPlate();
+							b.setPlate(null);
+							break;
+						}
+					}
+					if (plate != null) {
+						holdingPlate = true;
+						holdingAnimation = new PlateMoveAnimation(this, gc, plate);
+						holdingAnimation.start();
+					}
+				} else {
+					for (Block[] blocks : board.getBlocks()) {
+						for (Block b : blocks) {
+							if (b.isMouseOver())
+								b.setPlate(holdingAnimation.getPlate());
+						}
+					}
+					holdingPlate = false;
+					holdingAnimation.stop();
+					drawBackgroundAndBoard();
+
+				}
+			}
+			MouseUtility.setMousePressed(true);
+		});
+		this.setOnMouseReleased(event -> {
+			MouseUtility.setMousePressed(false);
 		});
 	}
 

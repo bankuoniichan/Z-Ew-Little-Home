@@ -2,6 +2,7 @@ package object;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import utility.MouseUtility;
 
 public class Block {
 	/* isPastable == isEmpty ?? */
@@ -9,6 +10,7 @@ public class Block {
 	private boolean isPickable;
 	private boolean isEmpty;
 	private Plate plate;
+	private int x, y;
 
 	public Block(boolean isPickable, boolean isPastable) {
 		this.isPastable = isPastable;
@@ -54,6 +56,14 @@ public class Block {
 		} else {
 			plate.draw(gc, x, y);
 		}
+		this.x = x;
+		this.y = y;
 
+	}
+
+	public boolean isMouseOver() {
+		int mouseX = MouseUtility.getMouseX();
+		int mouseY = MouseUtility.getMouseY();
+		return (x <= mouseX && mouseX <= x + 50 && y <= mouseY && mouseY <= y + 50);
 	}
 }
