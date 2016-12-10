@@ -45,25 +45,16 @@ public class Board {
 		return row;
 	}
 
-	public List<NumberPlate> getNearPlates(int x, int y) {
-		List<NumberPlate> list = new ArrayList<NumberPlate>();
-
-		if (!blocks[x - 1][y].isEmpty()) {
-			list.add((NumberPlate) blocks[x - 1][y].getPlate());
-		}
-
-		if (!blocks[x + 1][y].isEmpty()) {
-			list.add((NumberPlate) blocks[x + 1][y].getPlate());
-		}
-
-		if (!blocks[x][y - 1].isEmpty()) {
-			list.add((NumberPlate) blocks[x][y - 1].getPlate());
-		}
-
-		if (!blocks[x][y + 1].isEmpty()) {
-			list.add((NumberPlate) blocks[x][y + 1].getPlate());
-		}
-
+	public List<Block> getNearBlocks(int col, int row) {
+		List<Block> list = new ArrayList<>();
+		if (col - 1 >= 0)
+			list.add(blocks[col - 1][row]);
+		if (row - 1 >= 0)
+			list.add(blocks[col][row - 1]);
+		if (col + 1 < column)
+			list.add(blocks[col + 1][row]);
+		if (row + 1 < this.row)
+			list.add(blocks[col][row + 1]);
 		return list;
 	}
 
@@ -98,7 +89,7 @@ public class Board {
 	public void place(Plate plate, int x, int y) {
 		blocks[x][y].setPlate(plate);
 	}
-	
+
 	public Plate getPlate(int x, int y) {
 		return blocks[x][y].getPlate();
 	}
@@ -110,8 +101,8 @@ public class Board {
 	public int getHeight() {
 		return height;
 	}
-	
-	public Block[][] getBlocks(){
+
+	public Block[][] getBlocks() {
 		return blocks;
 	}
 

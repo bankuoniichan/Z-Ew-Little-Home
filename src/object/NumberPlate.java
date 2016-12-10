@@ -7,15 +7,22 @@ import java.util.Random;
 import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
 
+import animation.MergeAnimation;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import ui.GameScreen;
+import ui.Main;
+import utility.DrawingUtility;
 
 public class NumberPlate extends Plate {
 	private int label;
 	private int x, y;
+	private GraphicsContext gc;
+	private GameScreen gameScreen;
+	private static Random rand = new Random();
 
 	public NumberPlate(int number) {
 		label = number;
@@ -25,50 +32,39 @@ public class NumberPlate extends Plate {
 		return label;
 	}
 
+	public void increaseLabel() {
+		label++;
+	}
+
 	public boolean isSameLabel(NumberPlate otherPlate) {
 		return this.label == otherPlate.label;
 	}
 
-	public void place(Board board, int x, int y) {
-		this.x = x;
-		this.y = y;
-		board.place(this, x, y);
-	}
-
-	public void work(Board board) {
-		List<NumberPlate> nearPlates = board.getNearPlates(this.x, this.y);
-		int count = 0;
+	public void work(Board board, int x, int y, GameScreen gameScreen) {
+		List<Block> nearBlocks = board.getNearBlocks(x, y);
+		List<NumberPlate> sameLabelPlates = new ArrayList<>();
 		boolean worked = false;
-		List<Thread> listThread = new ArrayList<Thread>();
 
-		for (NumberPlate plate : nearPlates) {
-			if (this.isSameLabel(plate)) {
-				count += 1;
-				worked = true;
-				board.remove(plate.x, plate.y);
-
-				listThread.add(new Thread(() -> {
-					/*
-					 * fill code >> Merge it
-					 */
-				}));
-
-			}
+		for (Block block : nearBlocks) {
+			if (!block.isEmpty())
+				if (((NumberPlate) block.getPlate()).isSameLabel(this)) {
+					worked = true;
+					sameLabelPlates.add((NumberPlate) block.getPlate());
+					block.remove();
+				}
 		}
 
-		this.label += count;
-		listThread.add(new Thread(() -> {
-			/*
-			 * fill code >> increase number >> draw label effect if count > 1
-			 */
-		}));
+		if (sameLabelPlates.size() > 0) {
+			new MergeAnimation(this, sameLabelPlates, gameScreen, gc).start();
+		}
 
 		if (worked)
-			work(board);
+			work(board, x, y, gameScreen);
 
 	}
 
 	public void draw(GraphicsContext gc, int x, int y) {
+		this.gc = gc;
 		gc.setFill(Color.WHITESMOKE);
 		gc.setStroke(Color.LAVENDER);
 		gc.fillRoundRect(x, y, 50, 50, 10, 10);
@@ -82,5 +78,20 @@ public class NumberPlate extends Plate {
 		gc.fillText("" + label, x + (50 - fontWidth) / 2, y + (110 - fontHeight) / 2);
 
 	}
-	
+
+	public static NumberPlate generateRandom() {
+		return new NumberPlate(1 + rand.nextInt(3));
+	}
+
+	public boolean isSamePosition(NumberPlate n) {
+		return this.x == n.x && this.y == n.y;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
 }

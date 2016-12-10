@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import object.Plate;
 import ui.GameScreen;
+import ui.Main;
 import utility.MouseUtility;
 
 public class PlateMoveAnimation extends AnimationTimer {

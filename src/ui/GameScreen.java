@@ -67,7 +67,6 @@ public class GameScreen extends StackPane {
 					for (Block b : blocks) {
 						if (b.isMouseOver()) {
 							plate = b.getPlate();
-							System.out.println(plate+" : "+((NumberPlate) plate).getLabel());
 							b.remove();
 							pickedBlock = b;
 							break;
@@ -79,17 +78,22 @@ public class GameScreen extends StackPane {
 						holdingAnimation.start();
 					}
 				} else {
-					for (Block[] blocks : board.getBlocks()) {
-						for (Block b : blocks) {
-							if (b.isMouseOver() && b.isEmpty()){
+					Block[][] blocks = board.getBlocks();
+					for (int i = 0; i < board.getColumn(); i++) {
+						for (int j = 0; j < board.getColumn(); j++) {
+							Block b = blocks[i][j];
+							if (b.isMouseOver() && b.isEmpty()) {
 								b.setPlate(holdingAnimation.getPlate());
-								pickedBlock.setPlate(new NumberPlate(1+(int)(3*Math.random())));
-								System.out.println(pickedBlock.getPlate()+" : "+((NumberPlate) holdingAnimation.getPlate()).getLabel());
+								pickedBlock.setPlate(NumberPlate.generateRandom());
+								holdingPlate = false;
+								holdingAnimation.stop();
+								drawBackgroundAndBoard();
+								((NumberPlate) b.getPlate()).work(board, i, j,this);
+								return;
 							}
-							else
-								pickedBlock.setPlate(holdingAnimation.getPlate());
 						}
 					}
+					pickedBlock.setPlate(holdingAnimation.getPlate());
 					holdingPlate = false;
 					holdingAnimation.stop();
 					drawBackgroundAndBoard();
@@ -110,7 +114,7 @@ public class GameScreen extends StackPane {
 		board.draw(gc, padding, padding);
 
 		// 3 > next function to be dev.
-		
+
 		selectField.draw(gc, padding, padding + 20 + board.getHeight());
 	}
 }
