@@ -43,23 +43,17 @@ public class NumberPlate extends Plate {
 	public void work(Board board, int x, int y, GameScreen gameScreen) {
 		List<Block> nearBlocks = board.getNearBlocks(x, y);
 		List<NumberPlate> sameLabelPlates = new ArrayList<>();
-		boolean worked = false;
-
 		for (Block block : nearBlocks) {
 			if (!block.isEmpty())
 				if (((NumberPlate) block.getPlate()).isSameLabel(this)) {
-					worked = true;
 					sameLabelPlates.add((NumberPlate) block.getPlate());
 					block.remove();
 				}
 		}
 
 		if (sameLabelPlates.size() > 0) {
-			new MergeAnimation(this, sameLabelPlates, gameScreen, gc).start();
+			new MergeAnimation(this, sameLabelPlates, gameScreen, gc, board, x, y).start();
 		}
-
-		if (worked)
-			work(board, x, y, gameScreen);
 
 	}
 
