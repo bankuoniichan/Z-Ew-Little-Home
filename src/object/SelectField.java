@@ -29,7 +29,7 @@ public class SelectField {
 		Random rand = new Random();
 		for (int i = 0; i < n; i++) {
 			blocks[i] = new Block(true, false);
-			blocks[i].setPlate(new NumberPlate(1 + rand.nextInt(3)));
+			blocks[i].setPlate(new NumberPlate(1+(int)(3*Math.random())));
 		}
 	}
 

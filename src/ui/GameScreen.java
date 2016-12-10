@@ -20,6 +20,7 @@ public class GameScreen extends StackPane {
 	private Canvas canvas;
 	private GraphicsContext gc;
 	private boolean holdingPlate;
+	private Block pickedBlock = null;
 	private PlateMoveAnimation holdingAnimation = null;
 
 	public GameScreen(Board board) {
@@ -66,7 +67,9 @@ public class GameScreen extends StackPane {
 					for (Block b : blocks) {
 						if (b.isMouseOver()) {
 							plate = b.getPlate();
+							System.out.println(plate+" : "+((NumberPlate) plate).getLabel());
 							b.remove();
+							pickedBlock = b;
 							break;
 						}
 					}
@@ -78,8 +81,13 @@ public class GameScreen extends StackPane {
 				} else {
 					for (Block[] blocks : board.getBlocks()) {
 						for (Block b : blocks) {
-							if (b.isMouseOver())
+							if (b.isMouseOver() && b.isEmpty()){
 								b.setPlate(holdingAnimation.getPlate());
+								pickedBlock.setPlate(new NumberPlate(1+(int)(3*Math.random())));
+								System.out.println(pickedBlock.getPlate()+" : "+((NumberPlate) holdingAnimation.getPlate()).getLabel());
+							}
+							else
+								pickedBlock.setPlate(holdingAnimation.getPlate());
 						}
 					}
 					holdingPlate = false;

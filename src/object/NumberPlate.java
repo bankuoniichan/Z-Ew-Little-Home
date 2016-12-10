@@ -2,6 +2,7 @@ package object;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
@@ -15,7 +16,6 @@ import javafx.scene.text.FontWeight;
 public class NumberPlate extends Plate {
 	private int label;
 	private int x, y;
-	// private boolean isMerge;
 
 	public NumberPlate(int number) {
 		label = number;
@@ -33,7 +33,6 @@ public class NumberPlate extends Plate {
 		this.x = x;
 		this.y = y;
 		board.place(this, x, y);
-		work(board);
 	}
 
 	public void work(Board board) {
@@ -83,4 +82,5 @@ public class NumberPlate extends Plate {
 		gc.fillText("" + label, x + (50 - fontWidth) / 2, y + (110 - fontHeight) / 2);
 
 	}
+	
 }
