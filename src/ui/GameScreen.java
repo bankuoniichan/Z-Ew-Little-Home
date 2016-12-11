@@ -1,10 +1,16 @@
 package ui;
 
+import com.sun.javafx.tk.FontLoader;
+import com.sun.javafx.tk.Toolkit;
+
 import animation.PlateMoveAnimation;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import object.Block;
 import object.Board;
 import object.NumberPlate;
@@ -22,6 +28,7 @@ public class GameScreen extends StackPane {
 	private boolean holdingPlate;
 	private Block pickedBlock = null;
 	private PlateMoveAnimation holdingAnimation = null;
+	private int score;
 
 	public GameScreen(Board board) {
 		super();
@@ -32,10 +39,10 @@ public class GameScreen extends StackPane {
 		holdingPlate = false;
 		canvas = new Canvas(screenWidth, screenHeight);
 		this.getChildren().add(canvas);
-		drawBackgroundAndBoard();
+		drawScreen();
 		this.requestFocus();
 		this.addEventListener();
-
+		score = 0;
 	}
 
 	public Board getBoard() {
@@ -80,23 +87,28 @@ public class GameScreen extends StackPane {
 				} else {
 					Block[][] blocks = board.getBlocks();
 					for (int i = 0; i < board.getColumn(); i++) {
-						for (int j = 0; j < board.getColumn(); j++) {
-							Block b = blocks[i][j];
-							if (b.isMouseOver() && b.isEmpty()) {
-								b.setPlate(holdingAnimation.getPlate());
-								pickedBlock.setPlate(NumberPlate.generateRandom());
-								holdingPlate = false;
-								holdingAnimation.stop();
-								drawBackgroundAndBoard();
-								((NumberPlate) b.getPlate()).work(board, i, j,this);
-								return;
+						for (int j = 0; j < board.getRow(); j++) {
+							try {
+								Block b = blocks[i][j];
+								if (b.isMouseOver() && b.isEmpty()) {
+									b.setPlate(holdingAnimation.getPlate());
+									pickedBlock.setPlate(NumberPlate.generateRandom());
+									holdingPlate = false;
+									holdingAnimation.stop();
+									drawScreen();
+									((NumberPlate) b.getPlate()).work(board, i, j, this);
+									return;
+								}
+							} catch (IndexOutOfBoundsException e) {
+								System.out.println("x = " + i + " : " + board.getColumn() + " // y = " + j + " : "
+										+ board.getRow() + " // ");
 							}
 						}
 					}
 					pickedBlock.setPlate(holdingAnimation.getPlate());
 					holdingPlate = false;
 					holdingAnimation.stop();
-					drawBackgroundAndBoard();
+					drawScreen();
 
 				}
 			}
@@ -107,14 +119,33 @@ public class GameScreen extends StackPane {
 		});
 	}
 
-	public void drawBackgroundAndBoard() {
+	public void increaseScore(int amount) {
+		score += amount;
+	}
+
+	public void drawScreen() {
 		gc = canvas.getGraphicsContext2D();
 		gc.setFill(Color.GAINSBORO);
 		gc.fillRect(0, 0, screenWidth, screenHeight);
 		board.draw(gc, padding, padding);
-
-		// 3 > next function to be dev.
-
 		selectField.draw(gc, padding, padding + 20 + board.getHeight());
+		drawScore();
+	}
+
+	private void drawScore() {
+		gc.setFont(Font.font("Impact", FontWeight.BOLD, FontPosture.REGULAR, 40));
+		gc.setFill(Color.THISTLE);
+		gc.setStroke(Color.HOTPINK);
+		String text = "Score : " + score;
+
+		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
+		double fontWidth = fontLoader.computeStringWidth(text, gc.getFont());
+		double fontHeight = fontLoader.getFontMetrics(gc.getFont()).getLineHeight();
+
+		int x = screenWidth - (10 + (int) fontWidth);
+		int y = (int) fontHeight - 12;
+
+		gc.fillText(text, x, y);
+		gc.strokeText(text, x, y);
 	}
 }

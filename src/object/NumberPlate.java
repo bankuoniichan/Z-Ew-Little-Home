@@ -17,6 +17,7 @@ import ui.GameScreen;
 import utility.AudioUtility;
 
 public class NumberPlate extends Plate {
+	private static int generateRange = 4;
 	private int label;
 	private int x, y;
 	private GraphicsContext gc;
@@ -32,6 +33,8 @@ public class NumberPlate extends Plate {
 
 	public void increaseLabel() {
 		label++;
+		if (label > generateRange)
+			generateRange = label;
 	}
 
 	public boolean isSameLabel(NumberPlate otherPlate) {
@@ -76,9 +79,11 @@ public class NumberPlate extends Plate {
 	}
 
 	public static NumberPlate generateRandom() {
-		return new NumberPlate(1 + rand.nextInt(3));
+		return new NumberPlate(1 + rand.nextInt(generateRange-1));
 	}
-
+	public static void setGenerateRange(int range){
+		generateRange = range;
+	}
 	public boolean isSamePosition(NumberPlate n) {
 		return this.x == n.x && this.y == n.y;
 	}

@@ -2,6 +2,7 @@ package object;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -35,6 +36,7 @@ public class Board {
 				blocks[i][j] = new Block(false, true);
 			}
 		}
+		generateInitialPlates();
 	}
 
 	public int getColumn() {
@@ -104,6 +106,22 @@ public class Board {
 
 	public Block[][] getBlocks() {
 		return blocks;
+	}
+
+	public void generateInitialPlates(){
+		int blocksCount = column*row-1;
+		int platesCount = (int)Math.ceil((blocksCount)/12);
+		Random rand = new Random();
+		while(platesCount > 0 && blocksCount >= 0){
+			if(blocksCount==0){
+				if(platesCount>0)
+					blocks[0][0].setPlate(NumberPlate.generateRandom());
+			}else if(rand.nextInt(blocksCount)<platesCount){
+				blocks[(blocksCount - (blocksCount % row))/row][blocksCount % row].setPlate(NumberPlate.generateRandom());
+				platesCount--;
+			}
+			blocksCount--;
+		}
 	}
 
 	public void draw(GraphicsContext gc, int x, int y) {

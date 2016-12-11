@@ -20,7 +20,7 @@ public class PlateMoveAnimation extends AnimationTimer {
 
 	@Override
 	public void handle(long currentTime) {
-		gameScreen.drawBackgroundAndBoard();
+		gameScreen.drawScreen();
 		plate.draw(gc, MouseUtility.getMouseX()-25, MouseUtility.getMouseY()-25);
 	}
 	

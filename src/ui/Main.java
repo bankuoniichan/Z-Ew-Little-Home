@@ -11,6 +11,7 @@ public class Main extends Application {
 	private Stage primaryStage;
 	private Scene gameScene;
 	private Scene optionScene;
+	private Board board;
 	private OptionPane optionPane;
 	private GameScreen gameScreen;
 	private boolean isGameScreenShow;
@@ -47,7 +48,9 @@ public class Main extends Application {
 	public void toggleScene() {
 		isGameScreenShow = !isGameScreenShow;
 		if (isGameScreenShow) {
-			gameScreen = new GameScreen(new Board(optionPane.getColumnValue(), optionPane.getRowValue()));
+			board = new Board(optionPane.getColumnValue(), optionPane.getRowValue());
+			NumberPlate.setGenerateRange((int)Math.ceil(((double)(board.getColumn()+board.getRow()))/2)-1);
+			gameScreen = new GameScreen(board);
 			gameScreen.requestFocus();
 			gameScene = new Scene(gameScreen);
 			primaryStage.setScene(gameScene);
