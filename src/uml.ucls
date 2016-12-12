@@ -2,343 +2,310 @@
 <class-diagram version="1.1.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
   router="FAN">  
-  <class id="1" language="java" name="object.EffectPlate" project="testProject" 
-    file="/testProject/src/object/EffectPlate.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="192" x="1692" y="1857"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="ui.GameScreen" project="testProject" file="/testProject/src/ui/GameScreen.java" 
+  <class id="1" language="java" name="ui.GameScreen" project="testProject" file="/testProject/src/ui/GameScreen.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="156" x="1155" y="473"/>    
+    <position height="369" width="156" x="916" y="412"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="3" language="java" name="ui" project="testProject" file="/testProject/src/ui" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="227" y="190"/>    
-    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <class id="4" language="java" name="ui.OptionPane" project="testProject" file="/testProject/src/ui/OptionPane.java" 
+  <class id="2" language="java" name="ui.OptionPanel" project="testProject" file="/testProject/src/ui/OptionPanel.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="171" x="1753" y="473"/>    
+    <position height="189" width="171" x="1274" y="412"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="utility.DrawingUtility" project="testProject" 
+  <class id="3" language="java" name="utility.DrawingUtility" project="testProject" 
     file="/testProject/src/utility/DrawingUtility.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="214" x="658" y="190"/>    
+    <position height="135" width="214" x="662" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="6" language="java" name="animation" project="testProject" file="/testProject/src/animation" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="368" y="190"/>    
-    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <class id="7" language="java" name="utility.AudioUtility" project="testProject" 
+  <class id="4" language="java" name="utility.AudioUtility" project="testProject" 
     file="/testProject/src/utility/AudioUtility.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="109" x="509" y="190"/>    
+    <position height="117" width="109" x="291" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="object.Plate" project="testProject" file="/testProject/src/object/Plate.java" 
+  <class id="5" language="java" name="object.Plate" project="testProject" file="/testProject/src/object/Plate.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="194" x="1692" y="1718"/>    
+    <position height="99" width="194" x="1213" y="1693"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="animation.PlateMoveAnimation" project="testProject" 
+  <class id="6" language="java" name="animation.PlateMoveAnimation" project="testProject" 
     file="/testProject/src/animation/PlateMoveAnimation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="303" x="912" y="190"/>    
+    <position height="135" width="303" x="916" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="object.NumberPlate" project="testProject" 
+  <class id="7" language="java" name="object.NumberPlate" project="testProject" 
     file="/testProject/src/object/NumberPlate.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2190" y="2033"/>    
+    <position height="369" width="207" x="1508" y="1832"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="utility.MouseUtility" project="testProject" 
+  <class id="8" language="java" name="utility.MouseUtility" project="testProject" 
     file="/testProject/src/utility/MouseUtility.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="182" x="1255" y="190"/>    
+    <position height="243" width="182" x="440" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="ui.Main" project="testProject" file="/testProject/src/ui/Main.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="178" x="1759" y="190"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <package id="13" language="java" name="object" project="testProject" file="/testProject/src/object" binary="false" 
+  <class id="9" language="java" name="ui.Main" project="testProject" file="/testProject/src/ui/Main.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="1477" y="190"/>    
-    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <package id="14" language="java" name="utility" project="testProject" file="/testProject/src/utility" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="1618" y="190"/>    
-    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <class id="15" language="java" name="object.Board" project="testProject" file="/testProject/src/object/Board.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1475" y="961"/>    
+    <position height="225" width="178" x="1259" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="animation.MergeAnimation" project="testProject" 
+  <class id="10" language="java" name="object.Board" project="testProject" file="/testProject/src/object/Board.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="477" width="224" x="968" y="821"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="animation.MergeAnimation" project="testProject" 
     file="/testProject/src/animation/MergeAnimation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="473" x="1987" y="190"/>    
+    <position height="225" width="473" x="1487" y="129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="object.Block" project="testProject" file="/testProject/src/object/Block.java" 
+  <class id="12" language="java" name="object.Block" project="testProject" file="/testProject/src/object/Block.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="192" x="1155" y="1363"/>    
+    <position height="315" width="192" x="676" y="1338"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="animation.PlateGenerateAnimation" project="testProject" 
+  <class id="13" language="java" name="animation.PlateGenerateAnimation" project="testProject" 
     file="/testProject/src/animation/PlateGenerateAnimation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="284" x="1387" y="1363"/>    
+    <position height="189" width="284" x="908" y="1338"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="object.SelectField" project="testProject" 
+  <class id="14" language="java" name="object.SelectField" project="testProject" 
     file="/testProject/src/object/SelectField.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="192" x="942" y="864"/>    
+    <position height="207" width="192" x="676" y="821"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="20">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="21" name="blocks"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+  <association id="15">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="16" name="holdingAnimation"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="24" name="holdingAnimation"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="27" name="gameScreen"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="30" name="plate"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="33" name="gameScreen"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="36" name="board"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="39" name="optionPane"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="41">    
-    <bendpoint x="1164" y="864"/>    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="42" name="pickedBlock"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="45" name="gameScreen"/>      
-      <multiplicity id="46" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="48" name="gameScreen"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <bendpoint x="1975" y="473"/>    
-    <bendpoint x="1975" y="864"/>    
-    <bendpoint x="1975" y="1363"/>    
-    <bendpoint x="1975" y="1718"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="51" name="currentMovingPlate"/>      
-      <multiplicity id="52" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <bendpoint x="1701" y="473"/>    
-    <bendpoint x="1701" y="864"/>    
-    <bendpoint x="1701" y="1363"/>    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="54" name="plate"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="57" name="instance"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
+  <association id="18">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="19" name="blocks"/>      
+      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="60" name="blocks"/>      
-      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
+  <association id="21">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="22" name="gameScreen"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="62">    
-    <bendpoint x="1996" y="473"/>    
-    <bendpoint x="1996" y="864"/>    
-    <bendpoint x="1996" y="1363"/>    
-    <bendpoint x="1996" y="1718"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="63" name="mainPlate"/>      
-      <multiplicity id="64" minimum="0" maximum="1"/>    
+  <association id="24">    
+    <bendpoint x="898" y="821"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="25" name="pickedBlock"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="27">    
+    <bendpoint x="1538" y="412"/>    
+    <bendpoint x="1538" y="821"/>    
+    <bendpoint x="1538" y="1338"/>    
+    <bendpoint x="1538" y="1693"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="28" name="aroundPlates"/>      
+      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="31" name="gameScreen"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="34" name="instance"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="36">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="37" name="optionPane"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="40" name="gameScreen"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="43" name="selectField"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="46" name="plate"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <bendpoint x="1475" y="412"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="49" name="board"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="65">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="66" name="selectField"/>      
-      <multiplicity id="67" minimum="0" maximum="1"/>    
+  <association id="51">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="52" name="gameScreen"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="68">    
-    <bendpoint x="1954" y="473"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="69" name="board"/>      
-      <multiplicity id="70" minimum="0" maximum="1"/>    
+  <association id="54">    
+    <bendpoint x="1517" y="412"/>    
+    <bendpoint x="1517" y="821"/>    
+    <bendpoint x="1517" y="1338"/>    
+    <bendpoint x="1517" y="1693"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="55" name="mainPlate"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="71">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="8"/>  
+  <association id="57">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="58" name="blocks"/>      
+      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="60">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
   </generalization>  
-  <association id="72">    
-    <bendpoint x="1722" y="473"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="73" name="board"/>      
-      <multiplicity id="74" minimum="0" maximum="1"/>    
+  <association id="61">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="62" name="plate"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="75">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="76">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="77" name="plate"/>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
+  <association id="64">    
+    <bendpoint x="1496" y="412"/>    
+    <bendpoint x="1496" y="821"/>    
+    <bendpoint x="1496" y="1338"/>    
+    <bendpoint x="1496" y="1693"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="65" name="currentMovingPlate"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="79">    
-    <bendpoint x="2017" y="473"/>    
-    <bendpoint x="2017" y="864"/>    
-    <bendpoint x="2017" y="1363"/>    
-    <bendpoint x="2017" y="1718"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="80" name="aroundPlates"/>      
-      <multiplicity id="81" minimum="0" maximum="2147483647"/>    
+  <association id="67">    
+    <bendpoint x="1222" y="412"/>    
+    <bendpoint x="1222" y="821"/>    
+    <bendpoint x="1222" y="1338"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="68" name="plate"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <bendpoint x="1243" y="412"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="71" name="board"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="74" name="board"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

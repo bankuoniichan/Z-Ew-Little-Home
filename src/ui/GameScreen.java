@@ -34,10 +34,11 @@ public class GameScreen extends StackPane {
 		return score;
 	}
 
-	public GameScreen(Board board) {
+	public GameScreen(Board board, int numberSelectField) {
 		super();
 		this.board = board;
-		selectField = new SelectField(board, 3);
+		selectField = new SelectField(board, numberSelectField);
+		
 		screenWidth = calculateScreenWidth();
 		screenHeight = calculateScreenHeight();
 		holdingPlate = false;

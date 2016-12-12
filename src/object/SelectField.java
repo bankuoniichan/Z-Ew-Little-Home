@@ -12,12 +12,9 @@ public class SelectField {
 	public SelectField(Board board, int n) {
 		this.width = board.getWidth();
 		this.height = 100;
-		if (n < 1) {
-			n = 1;
-		}
-		if (n > 4) {
-			n = 4;
-		}
+		/*
+		 * if (n < 1) { n = 1; } if (n > 4) { n = 4; }
+		 */
 		createBlocks(n);
 
 	}

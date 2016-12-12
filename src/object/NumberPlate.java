@@ -61,11 +61,19 @@ public class NumberPlate extends Plate {
 			new MergeAnimation(this, sameLabelPlates, gameScreen, gc, board, x, y).start();
 		} else {
 			if (board.isFull()) {
+				Random rand = new Random();
+				AudioUtility.playEnd((int)(1 + rand.nextInt(5)));
+
 				String showScore = "Your score is : " + gameScreen.getScore();
 				Alert alert = new Alert(AlertType.INFORMATION, showScore, ButtonType.CLOSE);
 				alert.setHeaderText(null);
 				alert.setTitle("GGWP");
 				alert.showAndWait();
+				/*
+				 * 
+				 * Random rand = new Random(); int xxx = 14 + rand.nextInt(6);
+				 * System.out.println(xxx); AudioUtility.playSound(xxx);
+				 */
 			}
 		}
 
@@ -93,7 +101,15 @@ public class NumberPlate extends Plate {
 	}
 
 	public static NumberPlate generateRandom() {
-		return new NumberPlate(1 + rand.nextInt(generateMax - 1));
+		try {
+			return new NumberPlate(1 + rand.nextInt(generateMax - 1));
+		} catch (IllegalArgumentException e) {
+			// System.out.println("Both row,column is 1 -> generateMax =
+			// 0\n(Bound of nextInt must be Positive)\n
+			// __________________________________________ \n");
+			return new NumberPlate(1 + rand.nextInt(1));
+		}
+
 	}
 
 	public static void setGenerateMax(int value) {

@@ -9,12 +9,12 @@ import object.NumberPlate;
 import ui.GameScreen;
 
 public class MergeAnimation extends AnimationTimer {
+	private int dx, dy;
+	private int x, y, score;
 	private List<NumberPlate> aroundPlates;
 	private NumberPlate mainPlate, currentMovingPlate;
-	private int dx, dy;
 	private GameScreen gameScreen;
 	private Board board;
-	private int x, y, score;
 	private GraphicsContext gc;
 
 	public MergeAnimation(NumberPlate mainPlate, List<NumberPlate> aroundPlates, GameScreen gameScreen,
