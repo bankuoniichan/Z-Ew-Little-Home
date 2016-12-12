@@ -46,8 +46,8 @@ public class OptionPane extends GridPane {
 		rowLabel.setPrefWidth(50);
 		colLabel.setPrefWidth(50);
 
-		rowSpinner = new Spinner<Integer>(4, 8, 5, 1);
-		colSpinner = new Spinner<Integer>(4, 15, 5, 1);
+		rowSpinner = new Spinner<Integer>(3, 8, 5, 1);
+		colSpinner = new Spinner<Integer>(3, 15, 5, 1);
 
 		rowSpinner.setPrefWidth(90);
 		colSpinner.setPrefWidth(90);

@@ -14,7 +14,6 @@ import javafx.scene.text.FontWeight;
 import object.Block;
 import object.Board;
 import object.NumberPlate;
-import object.Plate;
 import object.SelectField;
 import utility.MouseUtility;
 
@@ -29,6 +28,10 @@ public class GameScreen extends StackPane {
 	private Block pickedBlock = null;
 	private PlateMoveAnimation holdingAnimation = null;
 	private int score;
+
+	public int getScore() {
+		return score;
+	}
 
 	public GameScreen(Board board) {
 		super();
@@ -69,7 +72,7 @@ public class GameScreen extends StackPane {
 		this.setOnMousePressed(event -> {
 			if (!MouseUtility.isMousePressed()) {
 				if (!holdingPlate) {
-					Plate plate = null;
+					NumberPlate plate = null;
 					Block[] blocks = selectField.getBlocks();
 					for (Block b : blocks) {
 						if (b.isMouseOver()) {
@@ -125,7 +128,7 @@ public class GameScreen extends StackPane {
 
 	public void drawScreen() {
 		gc = canvas.getGraphicsContext2D();
-		gc.setFill(Color.GAINSBORO);
+		gc.setFill(Color.rgb(220, 237, 200));
 		gc.fillRect(0, 0, screenWidth, screenHeight);
 		board.draw(gc, padding, padding);
 		selectField.draw(gc, padding, padding + 20 + board.getHeight());
@@ -134,8 +137,8 @@ public class GameScreen extends StackPane {
 
 	private void drawScore() {
 		gc.setFont(Font.font("Impact", FontWeight.BOLD, FontPosture.REGULAR, 40));
-		gc.setFill(Color.THISTLE);
-		gc.setStroke(Color.HOTPINK);
+		gc.setFill(Color.DODGERBLUE);
+		gc.setStroke(Color.WHITE);
 		String text = "Score : " + score;
 
 		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
@@ -143,7 +146,7 @@ public class GameScreen extends StackPane {
 		double fontHeight = fontLoader.getFontMetrics(gc.getFont()).getLineHeight();
 
 		int x = screenWidth - (10 + (int) fontWidth);
-		int y = (int) fontHeight - 12;
+		int y = (int) fontHeight;
 
 		gc.fillText(text, x, y);
 		gc.strokeText(text, x, y);

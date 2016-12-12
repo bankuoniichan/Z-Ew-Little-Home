@@ -2,17 +2,16 @@ package animation;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
-import object.Plate;
+import object.NumberPlate;
 import ui.GameScreen;
-import ui.Main;
 import utility.MouseUtility;
 
 public class PlateMoveAnimation extends AnimationTimer {
-	private Plate plate;
+	private NumberPlate plate;
 	private GraphicsContext gc;
 	private GameScreen gameScreen;
 
-	public PlateMoveAnimation(GameScreen gameScreen, GraphicsContext gc, Plate plate) {
+	public PlateMoveAnimation(GameScreen gameScreen, GraphicsContext gc, NumberPlate plate) {
 		this.plate = plate;
 		this.gc = gc;
 		this.gameScreen = gameScreen;
@@ -24,7 +23,7 @@ public class PlateMoveAnimation extends AnimationTimer {
 		plate.draw(gc, MouseUtility.getMouseX()-25, MouseUtility.getMouseY()-25);
 	}
 	
-	public Plate getPlate(){
+	public NumberPlate getPlate(){
 		return plate;
 	}
 }

@@ -49,12 +49,12 @@ public class Main extends Application {
 		isGameScreenShow = !isGameScreenShow;
 		if (isGameScreenShow) {
 			board = new Board(optionPane.getColumnValue(), optionPane.getRowValue());
-			NumberPlate.setGenerateRange((int)Math.ceil(((double)(board.getColumn()+board.getRow()))/2)-1);
+			NumberPlate.setGenerateMax((int) Math.ceil(((double) (board.getColumn() + board.getRow())) / 2) - 1);
 			gameScreen = new GameScreen(board);
 			gameScreen.requestFocus();
 			gameScene = new Scene(gameScreen);
 			primaryStage.setScene(gameScene);
-			primaryStage.setTitle("Game name");
+			primaryStage.setTitle("PROG METH PROJECT-4 2016 ver. 7.00a");
 			primaryStage.centerOnScreen();
 		} else {
 			primaryStage.setScene(optionScene);

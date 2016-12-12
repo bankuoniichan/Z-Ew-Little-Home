@@ -9,7 +9,7 @@ public class Block {
 	protected boolean isPastable;
 	private boolean isPickable;
 	private boolean isEmpty;
-	private Plate plate;
+	private NumberPlate plate;
 	private int x, y;
 
 	public Block(boolean isPickable, boolean isPastable) {
@@ -31,11 +31,11 @@ public class Block {
 		return isEmpty;
 	}
 
-	public Plate getPlate() {
+	public NumberPlate getPlate() {
 		return plate;
 	}
 
-	public void setPlate(Plate plate) {
+	public void setPlate(NumberPlate plate) {
 		this.plate = plate;
 		isEmpty = false;
 		isPastable = false;
@@ -49,10 +49,8 @@ public class Block {
 
 	public void draw(GraphicsContext gc, int x, int y) {
 		if (isEmpty) {
-			gc.setFill(Color.ROSYBROWN);
+			gc.setFill(Color.rgb(30, 130, 76));
 			gc.fillRoundRect(x, y, 50, 50, 10, 10);
-			gc.setStroke(Color.LIGHTGREEN);
-			gc.strokeRoundRect(x, y, 50, 50, 10, 10);
 		} else {
 			plate.draw(gc, x, y);
 		}
