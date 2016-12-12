@@ -17,9 +17,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import ui.GameScreen;
+import ui.Main;
 import utility.AudioUtility;
+import utility.DrawingUtility;
 
-public class NumberPlate {
+public class NumberPlate implements Renderable{
 	private static int generateMax = 4;
 	private int label;
 	private int x, y;
@@ -75,12 +77,16 @@ public class NumberPlate {
 
 		gc.setFill(Color.rgb(118, 255, 3));
 		gc.setStroke(Color.BLACK);
-		gc.fillRoundRect(x, y, 50, 50, 10, 10);
-		gc.strokeRoundRect(x, y, 50, 50, 10, 10);
+		int cellSize = DrawingUtility.CELL_SIZE;
+		int cellArc = DrawingUtility.CELL_ARC;
+		gc.fillRoundRect(x, y, cellSize, cellSize, cellArc, cellArc);
+		gc.strokeRoundRect(x, y, cellSize, cellSize, cellArc, cellArc);
+		
 		Font font = Font.font("Tahoma", FontWeight.BOLD, FontPosture.REGULAR, 30);
 		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
 		double fontWidth = fontLoader.computeStringWidth("" + label, font);
 		double fontHeight = fontLoader.getFontMetrics(font).getLineHeight();
+		
 		gc.setFont(font);
 		gc.setFill(Color.WHITE);
 		gc.fillText("" + label, x + (50 - fontWidth) / 2, y + (110 - fontHeight) / 2);

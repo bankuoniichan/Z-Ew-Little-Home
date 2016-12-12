@@ -11,7 +11,7 @@ import ui.GameScreen;
 public class MergeAnimation extends AnimationTimer {
 	private List<NumberPlate> aroundPlates;
 	private NumberPlate mainPlate, currentMovingPlate;
-	private int dx, dy;
+	private int dirX, dirY, speed;
 	private GameScreen gameScreen;
 	private Board board;
 	private int x, y, score;
@@ -30,12 +30,13 @@ public class MergeAnimation extends AnimationTimer {
 		currentMovingPlate = aroundPlates.get(0);
 		this.aroundPlates.remove(0);
 		generateCurrentDirection();
+		speed = 5;
 	}
 
 	@Override
 	public void handle(long now) {
 		gameScreen.drawScreen();
-		currentMovingPlate.draw(gc, currentMovingPlate.getX() + 5 * dx, currentMovingPlate.getY() + 5 * dy);
+		currentMovingPlate.draw(gc, currentMovingPlate.getX() + speed * dirX, currentMovingPlate.getY() + speed * dirY);
 		for (NumberPlate p : aroundPlates)
 			p.draw(gc, p.getX(), p.getY());
 		mainPlate.draw(gc, mainPlate.getX(), mainPlate.getY());
@@ -56,17 +57,17 @@ public class MergeAnimation extends AnimationTimer {
 
 	private void generateCurrentDirection() {
 		if (currentMovingPlate.getX() > mainPlate.getX()) {
-			dx = -1;
-			dy = 0;
+			dirX = -1;
+			dirY = 0;
 		} else if (currentMovingPlate.getX() < mainPlate.getX()) {
-			dx = 1;
-			dy = 0;
+			dirX = 1;
+			dirY = 0;
 		} else if (currentMovingPlate.getY() > mainPlate.getY()) {
-			dx = 0;
-			dy = -1;
+			dirX = 0;
+			dirY = -1;
 		} else {
-			dx = 0;
-			dy = 1;
+			dirX = 0;
+			dirY = 1;
 		}
 	}
 }

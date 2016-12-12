@@ -25,7 +25,7 @@ public class SelectField {
 	public void createBlocks(int n) {
 		blocks = new Block[n];
 		for (int i = 0; i < n; i++) {
-			blocks[i] = new Block(true, false);
+			blocks[i] = new Block();
 			blocks[i].setPlate(NumberPlate.generateRandom());
 		}
 	}

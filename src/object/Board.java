@@ -32,7 +32,7 @@ public class Board {
 
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
-				blocks[i][j] = new Block(false, true);
+				blocks[i][j] = new Block();
 			}
 		}
 		generateInitialPlates();
@@ -59,40 +59,12 @@ public class Board {
 		return list;
 	}
 
-	public List<NumberPlate> getInRowPlates(int y) {
-		List<NumberPlate> list = new ArrayList<NumberPlate>();
-
-		for (int x = 0; x < column; x++) {
-			if (!blocks[x][y].isEmpty()) {
-				list.add((NumberPlate) blocks[x][y].getPlate());
-			}
-		}
-
-		return list;
-	}
-
-	public List<NumberPlate> getInColumnPlates(int x) {
-		List<NumberPlate> list = new ArrayList<NumberPlate>();
-
-		for (int y = 0; y < row; y++) {
-			if (!blocks[x][y].isEmpty()) {
-				list.add((NumberPlate) blocks[x][y].getPlate());
-			}
-		}
-
-		return list;
-	}
-
 	public void remove(int x, int y) {
 		blocks[x][y].remove();
 	}
 
 	public void place(NumberPlate plate, int x, int y) {
 		blocks[x][y].setPlate(plate);
-	}
-
-	public NumberPlate getPlate(int x, int y) {
-		return blocks[x][y].getPlate();
 	}
 
 	public int getWidth() {
@@ -133,9 +105,9 @@ public class Board {
 	}
 
 	public boolean isFull() {
-		for (Block[] block1 : this.blocks) {
-			for (Block block2 : block1) {
-				if (block2.isEmpty())
+		for (Block[] blocks : this.blocks) {
+			for (Block block : blocks) {
+				if (block.isEmpty())
 					return false;
 			}
 		}

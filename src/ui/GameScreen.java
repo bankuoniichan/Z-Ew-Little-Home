@@ -18,7 +18,7 @@ import object.SelectField;
 import utility.MouseUtility;
 
 public class GameScreen extends StackPane {
-	private int screenWidth, screenHeight;
+	private int screenWidth, screenHeight, centerGap;
 	private int padding = 40;
 	private Board board;
 	private SelectField selectField;
@@ -39,6 +39,7 @@ public class GameScreen extends StackPane {
 		selectField = new SelectField(board, 3);
 		screenWidth = calculateScreenWidth();
 		screenHeight = calculateScreenHeight();
+		centerGap = 20;
 		holdingPlate = false;
 		canvas = new Canvas(screenWidth, screenHeight);
 		this.getChildren().add(canvas);
@@ -131,7 +132,7 @@ public class GameScreen extends StackPane {
 		gc.setFill(Color.rgb(220, 237, 200));
 		gc.fillRect(0, 0, screenWidth, screenHeight);
 		board.draw(gc, padding, padding);
-		selectField.draw(gc, padding, padding + 20 + board.getHeight());
+		selectField.draw(gc, padding, padding + centerGap + board.getHeight());
 		drawScore();
 	}
 
@@ -144,8 +145,8 @@ public class GameScreen extends StackPane {
 		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
 		double fontWidth = fontLoader.computeStringWidth(text, gc.getFont());
 		double fontHeight = fontLoader.getFontMetrics(gc.getFont()).getLineHeight();
-
-		int x = screenWidth - (10 + (int) fontWidth);
+		int textLeftSidePadding = 10;
+		int x = screenWidth - (textLeftSidePadding + (int) fontWidth);
 		int y = (int) fontHeight;
 
 		gc.fillText(text, x, y);

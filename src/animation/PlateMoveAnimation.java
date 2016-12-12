@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import object.NumberPlate;
 import ui.GameScreen;
+import utility.DrawingUtility;
 import utility.MouseUtility;
 
 public class PlateMoveAnimation extends AnimationTimer {
@@ -20,10 +21,11 @@ public class PlateMoveAnimation extends AnimationTimer {
 	@Override
 	public void handle(long currentTime) {
 		gameScreen.drawScreen();
-		plate.draw(gc, MouseUtility.getMouseX()-25, MouseUtility.getMouseY()-25);
+		plate.draw(gc, MouseUtility.getMouseX() - DrawingUtility.CELL_SIZE / 2,
+				MouseUtility.getMouseY() - DrawingUtility.CELL_SIZE / 2);
 	}
-	
-	public NumberPlate getPlate(){
+
+	public NumberPlate getPlate() {
 		return plate;
 	}
 }

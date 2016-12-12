@@ -9,8 +9,7 @@ public class Main extends Application {
 	public static final Main instance = new Main();
 
 	private Stage primaryStage;
-	private Scene gameScene;
-	private Scene optionScene;
+	private Scene gameScene, optionScene;
 	private Board board;
 	private OptionPane optionPane;
 	private GameScreen gameScreen;
