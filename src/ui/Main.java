@@ -11,6 +11,7 @@ public class Main extends Application {
 	private Stage primaryStage;
 	private Scene gameScene;
 	private Scene optionScene;
+	private Board board;
 	private OptionPane optionPane;
 	private GameScreen gameScreen;
 	private boolean isGameScreenShow;
@@ -47,11 +48,13 @@ public class Main extends Application {
 	public void toggleScene() {
 		isGameScreenShow = !isGameScreenShow;
 		if (isGameScreenShow) {
-			gameScreen = new GameScreen(new Board(optionPane.getColumnValue(), optionPane.getRowValue()));
+			board = new Board(optionPane.getColumnValue(), optionPane.getRowValue());
+			NumberPlate.setGenerateMax((int) Math.ceil(((double) (board.getColumn() + board.getRow())) / 2) - 1);
+			gameScreen = new GameScreen(board);
 			gameScreen.requestFocus();
 			gameScene = new Scene(gameScreen);
 			primaryStage.setScene(gameScene);
-			primaryStage.setTitle("Game name");
+			primaryStage.setTitle("PROG METH PROJECT-4 2016 ver. 7.00a");
 			primaryStage.centerOnScreen();
 		} else {
 			primaryStage.setScene(optionScene);

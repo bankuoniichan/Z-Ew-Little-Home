@@ -14,7 +14,7 @@ public class MergeAnimation extends AnimationTimer {
 	private int dx, dy;
 	private GameScreen gameScreen;
 	private Board board;
-	private int x, y;
+	private int x, y, score;
 	private GraphicsContext gc;
 
 	public MergeAnimation(NumberPlate mainPlate, List<NumberPlate> aroundPlates, GameScreen gameScreen,
@@ -25,6 +25,7 @@ public class MergeAnimation extends AnimationTimer {
 		this.board = board;
 		this.x = x;
 		this.y = y;
+		this.score = mainPlate.getLabel() * (aroundPlates.size() + 1);
 		this.gameScreen = gameScreen;
 		currentMovingPlate = aroundPlates.get(0);
 		this.aroundPlates.remove(0);
@@ -33,7 +34,7 @@ public class MergeAnimation extends AnimationTimer {
 
 	@Override
 	public void handle(long now) {
-		gameScreen.drawBackgroundAndBoard();
+		gameScreen.drawScreen();
 		currentMovingPlate.draw(gc, currentMovingPlate.getX() + 5 * dx, currentMovingPlate.getY() + 5 * dy);
 		for (NumberPlate p : aroundPlates)
 			p.draw(gc, p.getX(), p.getY());
@@ -41,7 +42,8 @@ public class MergeAnimation extends AnimationTimer {
 		if (currentMovingPlate.isSamePosition(mainPlate)) {
 			mainPlate.increaseLabel();
 			if (aroundPlates.size() == 0) {
-				gameScreen.drawBackgroundAndBoard();
+				gameScreen.increaseScore(score);
+				gameScreen.drawScreen();
 				this.stop();
 				mainPlate.work(board, x, y, gameScreen);
 			} else {

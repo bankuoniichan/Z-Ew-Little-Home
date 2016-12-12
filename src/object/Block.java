@@ -49,10 +49,12 @@ public class Block {
 
 	public void draw(GraphicsContext gc, int x, int y) {
 		if (isEmpty) {
-			gc.setFill(Color.ROSYBROWN);
+			gc.setFill(Color.rgb(30, 130, 76));
 			gc.fillRoundRect(x, y, 50, 50, 10, 10);
-			gc.setStroke(Color.LIGHTGREEN);
-			gc.strokeRoundRect(x, y, 50, 50, 10, 10);
+			/*
+			 * gc.setStroke(Color.rgb(241, 248, 233)); gc.strokeRoundRect(x, y,
+			 * 50, 50, 10, 10);
+			 */
 		} else {
 			plate.draw(gc, x, y);
 		}

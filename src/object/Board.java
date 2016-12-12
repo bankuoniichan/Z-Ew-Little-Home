@@ -2,6 +2,7 @@ package object;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -35,6 +36,7 @@ public class Board {
 				blocks[i][j] = new Block(false, true);
 			}
 		}
+		generateInitialPlates();
 	}
 
 	public int getColumn() {
@@ -106,13 +108,41 @@ public class Board {
 		return blocks;
 	}
 
+	public void generateInitialPlates() {
+		int blocksCount = column * row - 1;
+		int platesCount = (int) Math.ceil((blocksCount) / 12);
+		Random rand = new Random();
+		while (platesCount > 0 && blocksCount >= 0) {
+			if (blocksCount == 0) {
+				if (platesCount > 0)
+					blocks[0][0].setPlate(NumberPlate.generateRandom());
+			} else if (rand.nextInt(blocksCount) < platesCount) {
+				blocks[(blocksCount - (blocksCount % row)) / row][blocksCount % row]
+						.setPlate(NumberPlate.generateRandom());
+				platesCount--;
+			}
+			blocksCount--;
+		}
+	}
+
 	public void draw(GraphicsContext gc, int x, int y) {
-		gc.setFill(Color.SADDLEBROWN);
-		gc.fillRoundRect(x, y, width, height, 20, 20);
+		//gc.setFill(Color.rgb(255, 255, 255));
+		//gc.fillRoundRect(x, y, width, height, 20, 20);
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
 				blocks[i][j].draw(gc, x + padding + i * (50 + gap), y + padding + j * (50 + gap));
 			}
 		}
+	}
+
+	public boolean isFull() {
+		for (Block[] block1 : this.blocks) {
+			for (Block block2 : block1) {
+				if (block2.isEmpty())
+					return false;
+			}
+		}
+
+		return true;
 	}
 }

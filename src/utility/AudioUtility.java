@@ -1,22 +1,20 @@
 package utility;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 
 public class AudioUtility {
-	public static MediaPlayer[] multi = new MediaPlayer[3];
+	public static AudioClip[] multi = new AudioClip[4];
 	static {
 		try {
-			multi[0] = new MediaPlayer(new Media(ClassLoader.getSystemResource("sound/Fireblast_x1.mp3").toString()));
-			multi[1] = new MediaPlayer(new Media(ClassLoader.getSystemResource("sound/Fireblast_x2.mp3").toString()));
-			multi[2] = new MediaPlayer(new Media(ClassLoader.getSystemResource("sound/Fireblast_x3.mp3").toString()));
-			multi[3] = new MediaPlayer(new Media(ClassLoader.getSystemResource("sound/Fireblast_x4.mp3").toString()));
+			multi[0] = new AudioClip(ClassLoader.getSystemResource("sound/Fireblast_x1.wav").toString());
+			multi[1] = new AudioClip(ClassLoader.getSystemResource("sound/Fireblast_x2.wav").toString());
+			multi[2] = new AudioClip(ClassLoader.getSystemResource("sound/Fireblast_x3.wav").toString());
+			multi[3] = new AudioClip(ClassLoader.getSystemResource("sound/Fireblast_x4.wav").toString());
 		} catch (Exception e) {
 		}
 	}
 
 	public static void playMulti(int multi) {
-		//AudioUtility.multi[multi - 1].play();
-		new MediaPlayer(new Media(ClassLoader.getSystemResource("sound/Fireblast_x"+multi+".mp3").toString())).play();
+		AudioUtility.multi[multi - 1].play();
 	}
 }
