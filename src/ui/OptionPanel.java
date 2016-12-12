@@ -26,23 +26,23 @@ public class OptionPanel extends GridPane {
 		HBox setCol = new HBox();
 		HBox setting = new HBox();
 		HBox buttonPane = new HBox();
-		HBox setSelectField = new HBox();
+		HBox setSel = new HBox();
 
 		setRow.setPrefHeight(100);
 		setRow.setPrefWidth(200);
 		setCol.setPrefHeight(100);
 		setCol.setPrefWidth(200);
+		setSel.setPrefHeight(100);
+		setSel.setPrefWidth(200);
 		setting.setPrefHeight(100);
 		setting.setPrefWidth(600);
-		setSelectField.setPrefHeight(100);
-		setSelectField.setPrefWidth(200);
 		buttonPane.setPrefHeight(50);
 		buttonPane.setPrefWidth(400);
 
 		setRow.setPadding(new Insets(10));
 		setCol.setPadding(new Insets(10));
+		setSel.setPadding(new Insets(10));
 		setting.setPadding(new Insets(10));
-		setSelectField.setPadding(new Insets(10));
 		buttonPane.setPadding(new Insets(10));
 
 		Label rowLabel = new Label("Row");
@@ -50,11 +50,11 @@ public class OptionPanel extends GridPane {
 		Label selLabel = new Label("Amount of\nSelect Box");
 		rowLabel.setPrefWidth(50);
 		colLabel.setPrefWidth(50);
-		selLabel.setPrefWidth(80);
+		selLabel.setPrefWidth(70);
 
 		rowSpinner = new Spinner<Integer>(1, 8, 5, 1);
 		colSpinner = new Spinner<Integer>(1, 15, 5, 1);
-		selSpinner = new Spinner<Integer>(1, 4, 3, 1);
+		selSpinner = new Spinner<Integer>(1, 6, 4, 1);
 
 		rowSpinner.setPrefWidth(90);
 		colSpinner.setPrefWidth(90);
@@ -64,12 +64,12 @@ public class OptionPanel extends GridPane {
 		setRow.getChildren().add(rowSpinner);
 		setCol.getChildren().add(colLabel);
 		setCol.getChildren().add(colSpinner);
-		setSelectField.getChildren().add(selLabel);
-		setSelectField.getChildren().add(selSpinner);
+		setSel.getChildren().add(selLabel);
+		setSel.getChildren().add(selSpinner);
 
 		setting.getChildren().add(setRow);
 		setting.getChildren().add(setCol);
-		setting.getChildren().add(setSelectField);
+		setting.getChildren().add(setSel);
 		startButton.setPrefWidth(80);
 
 		buttonPane.setAlignment(Pos.CENTER);
@@ -88,9 +88,9 @@ public class OptionPanel extends GridPane {
 		return rowSpinner.getValue();
 	}
 
-	public int getSelectFieldValue() {
-		if (colSpinner.getValue() + rowSpinner.getValue() < selSpinner.getValue())
-			return colSpinner.getValue() + rowSpinner.getValue() - 1;
+	public int getSelValue() {
+		if (getRowValue() + getColumnValue() < selSpinner.getValue())
+			return getRowValue() + getColumnValue() - 1;
 		return selSpinner.getValue();
 	}
 }

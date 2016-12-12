@@ -18,10 +18,10 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import ui.GameScreen;
 import utility.AudioUtility;
+import utility.DrawingUtility;
 
-public class NumberPlate extends Plate {
+public class NumberPlate implements Renderable {
 	private static int generateMax = 4;
-	// private static int generateMin = 1;
 	private int label;
 	private int x, y;
 	private GraphicsContext gc;
@@ -62,18 +62,13 @@ public class NumberPlate extends Plate {
 		} else {
 			if (board.isFull()) {
 				Random rand = new Random();
-				AudioUtility.playEnd((int)(1 + rand.nextInt(5)));
+				AudioUtility.playEnd(1 + rand.nextInt(5));
 
 				String showScore = "Your score is : " + gameScreen.getScore();
 				Alert alert = new Alert(AlertType.INFORMATION, showScore, ButtonType.CLOSE);
 				alert.setHeaderText(null);
 				alert.setTitle("GGWP");
 				alert.showAndWait();
-				/*
-				 * 
-				 * Random rand = new Random(); int xxx = 14 + rand.nextInt(6);
-				 * System.out.println(xxx); AudioUtility.playSound(xxx);
-				 */
 			}
 		}
 
@@ -81,17 +76,61 @@ public class NumberPlate extends Plate {
 
 	public void draw(GraphicsContext gc, int x, int y) {
 		this.gc = gc;
+		if (label == 1)
+			gc.setFill(Color.rgb(189, 189, 189));
+		else if (label == 2)
+			gc.setFill(Color.rgb(158, 158, 158));
+		else if (label == 3)
+			gc.setFill(Color.rgb(174, 213, 129));
+		else if (label == 4)
+			gc.setFill(Color.rgb(139, 195, 74));
+		else if (label == 5)
+			gc.setFill(Color.rgb(100, 221, 23));
+		else if (label == 6)
+			gc.setFill(Color.rgb(118, 255, 3));
+		else if (label == 7)
+			gc.setFill(Color.rgb(178, 223, 219));
+		else if (label == 8)
+			gc.setFill(Color.rgb(38, 166, 154));
+		else if (label == 9)
+			gc.setFill(Color.rgb(0, 150, 136));
+		else if (label == 10)
+			gc.setFill(Color.rgb(121, 134, 203));
+		else if (label == 11)
+			gc.setFill(Color.rgb(63, 81, 181));
+		else if (label == 12)
+			gc.setFill(Color.rgb(26, 35, 126));
+		else if (label == 13)
+			gc.setFill(Color.rgb(244, 143, 177));
+		else if (label == 14)
+			gc.setFill(Color.rgb(245, 0, 87));
+		else if (label == 15)
+			gc.setFill(Color.rgb(229, 115, 115));
+		else if (label == 16)
+			gc.setFill(Color.rgb(229, 57, 53));
+		else if (label == 17)
+			gc.setFill(Color.rgb(255, 171, 64));
+		else if (label == 18)
+			gc.setFill(Color.rgb(255, 183, 77));
+		else if (label == 19)
+			gc.setFill(Color.rgb(255, 245, 157));
+		else if (label == 20)
+			gc.setFill(Color.rgb(255, 241, 118));
+		else
+			gc.setFill(Color.rgb(52, 73, 94));
 
-		gc.setFill(Color.rgb(118, 255, 3));
 		gc.setStroke(Color.BLACK);
-		gc.fillRoundRect(x, y, 50, 50, 10, 10);
-		gc.strokeRoundRect(x, y, 50, 50, 10, 10);
+		int cellSize = DrawingUtility.CELL_SIZE;
+		int cellArc = DrawingUtility.CELL_ARC;
+		gc.fillRoundRect(x, y, cellSize, cellSize, cellArc, cellArc);
+		gc.strokeRoundRect(x, y, cellSize, cellSize, cellArc, cellArc);
+
 		Font font = Font.font("Tahoma", FontWeight.BOLD, FontPosture.REGULAR, 30);
 		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
 		double fontWidth = fontLoader.computeStringWidth("" + label, font);
 		double fontHeight = fontLoader.getFontMetrics(font).getLineHeight();
+
 		gc.setFont(font);
-		// DODGERBLUE
 		gc.setFill(Color.WHITE);
 		gc.fillText("" + label, x + (50 - fontWidth) / 2, y + (110 - fontHeight) / 2);
 
@@ -101,19 +140,20 @@ public class NumberPlate extends Plate {
 	}
 
 	public static NumberPlate generateRandom() {
-		try {
+		// use for increase chance to random a high value number 
+		// by random again if value from 1st random is less than half
+		int x = 1 + rand.nextInt(generateMax - 1);
+		if (x > generateMax / 2)
+			return new NumberPlate(x);
+		else
 			return new NumberPlate(1 + rand.nextInt(generateMax - 1));
-		} catch (IllegalArgumentException e) {
-			// System.out.println("Both row,column is 1 -> generateMax =
-			// 0\n(Bound of nextInt must be Positive)\n
-			// __________________________________________ \n");
-			return new NumberPlate(1 + rand.nextInt(1));
-		}
-
 	}
 
 	public static void setGenerateMax(int value) {
-		generateMax = value;
+		if (value < 2)
+			generateMax = 2;
+		else
+			generateMax = value;
 	}
 
 	public boolean isSamePosition(NumberPlate n) {

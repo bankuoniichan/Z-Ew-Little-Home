@@ -10,7 +10,7 @@ public class AudioUtility {
 	static {
 		try {
 			// multicast <--> merge
-			multi[0] = new AudioClip(ClassLoader.getSystemResource("sound/Fireblast_x1.wav").toString());
+			multi[0] = new AudioClip(ClassLoader.getSystemResource("sound/ping.wav").toString());
 			multi[1] = new AudioClip(ClassLoader.getSystemResource("sound/Fireblast_x2.wav").toString());
 			multi[2] = new AudioClip(ClassLoader.getSystemResource("sound/Fireblast_x3.wav").toString());
 			multi[3] = new AudioClip(ClassLoader.getSystemResource("sound/Fireblast_x4.wav").toString());
@@ -56,7 +56,4 @@ public class AudioUtility {
 		AudioUtility.wait[value - 1].play();
 	}
 	
-	public static void stop(){
-		
-	}
 }

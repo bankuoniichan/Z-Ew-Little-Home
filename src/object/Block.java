@@ -2,59 +2,43 @@ package object;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import utility.DrawingUtility;
 import utility.MouseUtility;
 
-public class Block {
-	/* isPastable == isEmpty ?? */
-	protected boolean isPastable;
-	private boolean isPickable;
+public class Block implements Renderable{
 	private boolean isEmpty;
-	private Plate plate;
+	private NumberPlate plate;
 	private int x, y;
 
-	public Block(boolean isPickable, boolean isPastable) {
-		this.isPastable = isPastable;
-		this.isPickable = isPickable;
+	public Block() {
 		this.isEmpty = true;
 		plate = null;
-	}
-
-	public boolean isPickable() {
-		return isPickable;
-	}
-
-	public boolean isPastable() {
-		return isPastable;
 	}
 
 	public boolean isEmpty() {
 		return isEmpty;
 	}
 
-	public Plate getPlate() {
+	public NumberPlate getPlate() {
 		return plate;
 	}
 
-	public void setPlate(Plate plate) {
+	public void setPlate(NumberPlate plate) {
 		this.plate = plate;
 		isEmpty = false;
-		isPastable = false;
 	}
 
 	public void remove() {
 		isEmpty = true;
 		plate = null;
-		isPastable = true;
 	}
 
 	public void draw(GraphicsContext gc, int x, int y) {
 		if (isEmpty) {
 			gc.setFill(Color.rgb(30, 130, 76));
-			gc.fillRoundRect(x, y, 50, 50, 10, 10);
-			/*
-			 * gc.setStroke(Color.rgb(241, 248, 233)); gc.strokeRoundRect(x, y,
-			 * 50, 50, 10, 10);
-			 */
+			int cellSize = DrawingUtility.CELL_SIZE;
+			int cellArc = DrawingUtility.CELL_ARC;
+			gc.fillRoundRect(x, y, cellSize, cellSize, cellArc, cellArc);
 		} else {
 			plate.draw(gc, x, y);
 		}

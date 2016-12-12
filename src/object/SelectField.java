@@ -12,9 +12,12 @@ public class SelectField {
 	public SelectField(Board board, int n) {
 		this.width = board.getWidth();
 		this.height = 100;
-		/*
-		 * if (n < 1) { n = 1; } if (n > 4) { n = 4; }
-		 */
+		if (n < 1) {
+			n = 1;
+		}
+		if (n > 4) {
+			n = 4;
+		}
 		createBlocks(n);
 
 	}
@@ -22,7 +25,7 @@ public class SelectField {
 	public void createBlocks(int n) {
 		blocks = new Block[n];
 		for (int i = 0; i < n; i++) {
-			blocks[i] = new Block(true, false);
+			blocks[i] = new Block();
 			blocks[i].setPlate(NumberPlate.generateRandom());
 		}
 	}

@@ -32,7 +32,7 @@ public class Board {
 
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
-				blocks[i][j] = new Block(false, true);
+				blocks[i][j] = new Block();
 			}
 		}
 		generateInitialPlates();
@@ -52,34 +52,10 @@ public class Board {
 			list.add(blocks[col - 1][row]);
 		if (row - 1 >= 0)
 			list.add(blocks[col][row - 1]);
-		if (col + 1 < this.column)
+		if (col + 1 < column)
 			list.add(blocks[col + 1][row]);
 		if (row + 1 < this.row)
 			list.add(blocks[col][row + 1]);
-		return list;
-	}
-
-	public List<NumberPlate> getInRowPlates(int y) {
-		List<NumberPlate> list = new ArrayList<NumberPlate>();
-
-		for (int x = 0; x < column; x++) {
-			if (!blocks[x][y].isEmpty()) {
-				list.add((NumberPlate) blocks[x][y].getPlate());
-			}
-		}
-
-		return list;
-	}
-
-	public List<NumberPlate> getInColumnPlates(int x) {
-		List<NumberPlate> list = new ArrayList<NumberPlate>();
-
-		for (int y = 0; y < row; y++) {
-			if (!blocks[x][y].isEmpty()) {
-				list.add((NumberPlate) blocks[x][y].getPlate());
-			}
-		}
-
 		return list;
 	}
 
@@ -87,12 +63,8 @@ public class Board {
 		blocks[x][y].remove();
 	}
 
-	public void place(Plate plate, int x, int y) {
+	public void place(NumberPlate plate, int x, int y) {
 		blocks[x][y].setPlate(plate);
-	}
-
-	public Plate getPlate(int x, int y) {
-		return blocks[x][y].getPlate();
 	}
 
 	public int getWidth() {
@@ -125,8 +97,6 @@ public class Board {
 	}
 
 	public void draw(GraphicsContext gc, int x, int y) {
-		// gc.setFill(Color.rgb(255, 255, 255));
-		// gc.fillRoundRect(x, y, width, height, 20, 20);
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
 				blocks[i][j].draw(gc, x + padding + i * (50 + gap), y + padding + j * (50 + gap));
@@ -135,9 +105,9 @@ public class Board {
 	}
 
 	public boolean isFull() {
-		for (Block[] block1 : this.blocks) {
-			for (Block block2 : block1) {
-				if (block2.isEmpty())
+		for (Block[] blocks : this.blocks) {
+			for (Block block : blocks) {
+				if (block.isEmpty())
 					return false;
 			}
 		}

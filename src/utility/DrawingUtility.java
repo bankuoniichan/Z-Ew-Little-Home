@@ -5,8 +5,11 @@ import ui.GameScreen;
 import ui.Main;
 
 public class DrawingUtility {
-	private static GameScreen gameScreen = Main.instance.getGameScreen();
-	private static GraphicsContext gc = Main.instance.getGameScreen().getCanvas().getGraphicsContext2D();
+	public static final int CELL_SIZE = 50;
+	public static final int CELL_ARC = 10;
+	
+	private static GameScreen gameScreen;
+	private static GraphicsContext gc;
 
 	public static GameScreen getGameScreen() {
 		return gameScreen;
