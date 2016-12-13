@@ -39,6 +39,7 @@ public class GameScreen extends StackPane {
 		selectField = new SelectField(board, value);
 		screenWidth = calculateScreenWidth();
 		screenHeight = calculateScreenHeight();
+
 		centerGap = 20;
 		holdingPlate = false;
 		canvas = new Canvas(screenWidth, screenHeight);
@@ -110,8 +111,7 @@ public class GameScreen extends StackPane {
 						}
 					}
 					pickedBlock.setPlate(holdingAnimation.getPlate());
-					holdingPlate = false;
-					holdingAnimation.stop();
+					holdingPlate = false;					holdingAnimation.stop();
 					drawScreen();
 				}
 			}

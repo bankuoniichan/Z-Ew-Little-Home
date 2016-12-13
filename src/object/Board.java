@@ -7,8 +7,12 @@ import java.util.Random;
 import javafx.scene.canvas.GraphicsContext;
 import utility.DrawingUtility;
 
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 public class Board {
 	private Block[][] blocks;
+
 	private int column, row;
 	private int width, height;
 	private int padding, gap;
@@ -20,7 +24,6 @@ public class Board {
 
 	public Board(int size) {
 		this(size, size);
-
 	}
 
 	public Board(int column, int row) {
@@ -43,8 +46,8 @@ public class Board {
 	public int getColumn() {
 		return column;
 	}
-
-	public int getRow() {
+  
+  public int getRow() {
 		return row;
 	}
 
@@ -65,6 +68,7 @@ public class Board {
 		blocks[x][y].remove();
 	}
 
+
 	public void place(NumberPlate plate, int x, int y) {
 		blocks[x][y].setPlate(plate);
 	}
@@ -76,6 +80,7 @@ public class Board {
 	public int getHeight() {
 		return height;
 	}
+
 
 	public Block[][] getBlocks() {
 		return blocks;

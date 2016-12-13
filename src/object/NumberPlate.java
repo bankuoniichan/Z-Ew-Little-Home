@@ -6,7 +6,6 @@ import java.util.Random;
 
 import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
-
 import animation.MergeAnimation;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
@@ -45,6 +44,7 @@ public class NumberPlate implements Renderable {
 		return this.label == otherPlate.label;
 	}
 
+
 	public void work(Board board, int x, int y, GameScreen gameScreen) {
 		List<Block> nearBlocks = board.getNearBlocks(x, y);
 		List<NumberPlate> sameLabelPlates = new ArrayList<>();
@@ -70,7 +70,6 @@ public class NumberPlate implements Renderable {
 				alert.showAndWait();
 			}
 		}
-
 	}
 
 	public void chooseColor() {
@@ -173,6 +172,7 @@ public class NumberPlate implements Renderable {
 	public int getX() {
 		return x;
 	}
+
 
 	public int getY() {
 		return y;
