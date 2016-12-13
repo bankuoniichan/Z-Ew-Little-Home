@@ -61,8 +61,7 @@ public class NumberPlate implements Renderable {
 			new MergeAnimation(this, sameLabelPlates, gameScreen, gc, board, x, y).start();
 		} else {
 			if (board.isFull()) {
-				Random rand = new Random();
-				AudioUtility.playEnd(1 + rand.nextInt(5));
+				AudioUtility.playEnd();
 
 				String showScore = "Your score is : " + gameScreen.getScore();
 				Alert alert = new Alert(AlertType.INFORMATION, showScore, ButtonType.CLOSE);
@@ -74,8 +73,7 @@ public class NumberPlate implements Renderable {
 
 	}
 
-	public void draw(GraphicsContext gc, int x, int y) {
-		this.gc = gc;
+	public void chooseColor() {
 		if (label == 1)
 			gc.setFill(Color.rgb(189, 189, 189));
 		else if (label == 2)
@@ -118,6 +116,11 @@ public class NumberPlate implements Renderable {
 			gc.setFill(Color.rgb(255, 241, 118));
 		else
 			gc.setFill(Color.rgb(52, 73, 94));
+	}
+
+	public void draw(GraphicsContext gc, int x, int y) {
+		this.gc = gc;
+		chooseColor();
 
 		gc.setStroke(Color.BLACK);
 		int cellSize = DrawingUtility.CELL_SIZE;
@@ -132,7 +135,9 @@ public class NumberPlate implements Renderable {
 
 		gc.setFont(font);
 		gc.setFill(Color.WHITE);
-		gc.fillText("" + label, x + (50 - fontWidth) / 2, y + (110 - fontHeight) / 2);
+		int positionError = 10;
+		gc.fillText("" + label, x + (DrawingUtility.CELL_SIZE - fontWidth) / 2,
+				y + (2 * DrawingUtility.CELL_SIZE + positionError - fontHeight) / 2);
 
 		this.x = x;
 		this.y = y;
@@ -140,10 +145,15 @@ public class NumberPlate implements Renderable {
 	}
 
 	public static NumberPlate generateRandom() {
-		// use for increase chance to random a high value number 
-		// by random again if value from 1st random is less than half
+		/*
+		 * use for increase chance to random a high value number by random again
+		 * if value from 1st random is less than 40% of difference between 1 and
+		 * generateMax
+		 */
+		
+		double reRandomChance = 0.4;
 		int x = 1 + rand.nextInt(generateMax - 1);
-		if (x > generateMax / 2)
+		if (x >= generateMax * (1 - reRandomChance))
 			return new NumberPlate(x);
 		else
 			return new NumberPlate(1 + rand.nextInt(generateMax - 1));

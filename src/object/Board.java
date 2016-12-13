@@ -5,15 +5,17 @@ import java.util.List;
 import java.util.Random;
 
 import javafx.scene.canvas.GraphicsContext;
+import utility.DrawingUtility;
 
 public class Board {
 	private Block[][] blocks;
 	private int column, row;
 	private int width, height;
 	private int padding, gap;
+	private final static int defaultBoardSize = 5;
 
 	public Board() {
-		this(5);
+		this(defaultBoardSize);
 	}
 
 	public Board(int size) {
@@ -27,8 +29,8 @@ public class Board {
 		blocks = new Block[column][row];
 		padding = 25;
 		gap = 15;
-		width = 2 * padding + (column - 1) * gap + column * 50;
-		height = 2 * padding + (row - 1) * gap + row * 50;
+		width = 2 * padding + (column - 1) * gap + column * DrawingUtility.CELL_SIZE;
+		height = 2 * padding + (row - 1) * gap + row * DrawingUtility.CELL_SIZE;
 
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
@@ -81,7 +83,8 @@ public class Board {
 
 	public void generateInitialPlates() {
 		int blocksCount = column * row - 1;
-		int platesCount = (int) Math.ceil((blocksCount) / 12);
+		int logicFactor = 12;
+		int platesCount = (int) Math.ceil((blocksCount) / logicFactor);
 		Random rand = new Random();
 		while (platesCount > 0 && blocksCount >= 0) {
 			if (blocksCount == 0) {
@@ -99,7 +102,8 @@ public class Board {
 	public void draw(GraphicsContext gc, int x, int y) {
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
-				blocks[i][j].draw(gc, x + padding + i * (50 + gap), y + padding + j * (50 + gap));
+				blocks[i][j].draw(gc, x + padding + i * (DrawingUtility.CELL_SIZE + gap),
+						y + padding + j * (DrawingUtility.CELL_SIZE + gap));
 			}
 		}
 	}
@@ -111,7 +115,6 @@ public class Board {
 					return false;
 			}
 		}
-
 		return true;
 	}
 }

@@ -2,6 +2,7 @@ package object;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import utility.DrawingUtility;
 
 public class SelectField {
 
@@ -12,12 +13,6 @@ public class SelectField {
 	public SelectField(Board board, int n) {
 		this.width = board.getWidth();
 		this.height = 100;
-		if (n < 1) {
-			n = 1;
-		}
-		if (n > 4) {
-			n = 4;
-		}
 		createBlocks(n);
 
 	}
@@ -46,7 +41,8 @@ public class SelectField {
 		gc.setFill(Color.rgb(178, 255, 89));
 		gc.fillRoundRect(x, y, width, height, 20, 20);
 		for (int i = 0; i < blocks.length; i++) {
-			blocks[i].draw(gc, x + width / (blocks.length + 1) * (i + 1) - 25, y + 25);
+			blocks[i].draw(gc, x + width / (blocks.length + 1) * (i + 1) - DrawingUtility.CELL_SIZE / 2,
+					y + DrawingUtility.CELL_SIZE / 2);
 		}
 	}
 }

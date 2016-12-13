@@ -33,10 +33,10 @@ public class GameScreen extends StackPane {
 		return score;
 	}
 
-	public GameScreen(Board board) {
+	public GameScreen(Board board, int value) {
 		super();
 		this.board = board;
-		selectField = new SelectField(board, 3);
+		selectField = new SelectField(board, value);
 		screenWidth = calculateScreenWidth();
 		screenHeight = calculateScreenHeight();
 		centerGap = 20;
@@ -62,7 +62,7 @@ public class GameScreen extends StackPane {
 	}
 
 	private int calculateScreenHeight() {
-		return 2 * padding + board.getHeight() + 150;
+		return 2 * padding + board.getHeight() + selectField.getHeight();
 	}
 
 	private void addEventListener() {
@@ -113,14 +113,11 @@ public class GameScreen extends StackPane {
 					holdingPlate = false;
 					holdingAnimation.stop();
 					drawScreen();
-
 				}
 			}
 			MouseUtility.setMousePressed(true);
 		});
-		this.setOnMouseReleased(event -> {
-			MouseUtility.setMousePressed(false);
-		});
+		this.setOnMouseReleased(event -> MouseUtility.setMousePressed(false));
 	}
 
 	public void increaseScore(int amount) {

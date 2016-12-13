@@ -11,10 +11,6 @@ public class OptionPanel extends GridPane {
 	private Spinner<Integer> rowSpinner;
 	private Spinner<Integer> selSpinner;
 
-	public Button getStartButton() {
-		return startButton;
-	}
-
 	public OptionPanel() {
 		super();
 
@@ -52,8 +48,8 @@ public class OptionPanel extends GridPane {
 		colLabel.setPrefWidth(50);
 		selLabel.setPrefWidth(70);
 
-		rowSpinner = new Spinner<Integer>(1, 8, 5, 1);
-		colSpinner = new Spinner<Integer>(1, 15, 5, 1);
+		rowSpinner = new Spinner<Integer>(2, 8, 5, 1);
+		colSpinner = new Spinner<Integer>(2, 15, 5, 1);
 		selSpinner = new Spinner<Integer>(1, 6, 4, 1);
 
 		rowSpinner.setPrefWidth(90);
@@ -80,6 +76,10 @@ public class OptionPanel extends GridPane {
 
 	}
 
+	public Button getStartButton() {
+		return startButton;
+	}
+
 	public int getColumnValue() {
 		return colSpinner.getValue();
 	}
@@ -89,8 +89,13 @@ public class OptionPanel extends GridPane {
 	}
 
 	public int getSelValue() {
-		if (getRowValue() + getColumnValue() < selSpinner.getValue())
-			return getRowValue() + getColumnValue() - 1;
-		return selSpinner.getValue();
+		int min = Integer.MAX_VALUE;
+		if (getColumnValue() < selSpinner.getValue())
+			min = getColumnValue();
+
+		if (selSpinner.getValue() < min)
+			min = selSpinner.getValue();
+		
+		return min;
 	}
 }

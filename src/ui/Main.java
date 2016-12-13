@@ -1,7 +1,5 @@
 package ui;
 
-import java.util.Random;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import object.*;
@@ -14,49 +12,36 @@ public class Main extends Application {
 	private Stage primaryStage;
 	private Scene gameScene, optionScene;
 	private Board board;
-	private OptionPanel optionPane;
+	private OptionPanel optionPanel;
 	private GameScreen gameScreen;
 	private boolean isGameScreenShow;
-	private static Thread t1;
-	private static Thread t2;
+	private final int defaultSelectFieldValue = 3;
+	
 	
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		optionPane = new OptionPanel();
-		optionScene = new Scene(optionPane);
+		optionPanel = new OptionPanel();
+		optionScene = new Scene(optionPanel);
 		isGameScreenShow = false;
 
-		gameScreen = new GameScreen(new Board());
+		gameScreen = new GameScreen(new Board(), defaultSelectFieldValue);
 		gameScreen.requestFocus();
 		gameScene = new Scene(gameScreen);
 
-		t2 = new Thread(() -> {
-			Random rand = new Random();
-			AudioUtility.playPlaying(1 + rand.nextInt(5));
-		});
-		
 		primaryStage.setScene(optionScene);
 		((OptionPanel) (optionScene.getRoot())).getStartButton().setOnAction(e -> {
-			// stop inital sound here pls
-			t1.stop();
-			t2.start();
+			AudioUtility.playPlaying();
 			toggleScene();
 		});
 		primaryStage.setTitle("Game Setting");
 		primaryStage.setResizable(false);
 		primaryStage.centerOnScreen();
 		primaryStage.show();
+		AudioUtility.playWait();
 	}
 
 	public static void main(String[] args) {
-
-		t1 = new Thread(() -> {
-			Random rand = new Random();
-			AudioUtility.playWait(1 + rand.nextInt(5));
-		});
-		//t1.start();
-		
 		launch(args);
 	}
 
@@ -67,13 +52,13 @@ public class Main extends Application {
 	public void toggleScene() {
 		isGameScreenShow = !isGameScreenShow;
 		if (isGameScreenShow) {
-			board = new Board(optionPane.getColumnValue(), optionPane.getRowValue());
+			board = new Board(optionPanel.getColumnValue(), optionPanel.getRowValue());
 			NumberPlate.setGenerateMax((int) Math.ceil(((double) (board.getColumn() + board.getRow())) / 2) - 1);
-			gameScreen = new GameScreen(board);
+			gameScreen = new GameScreen(board, optionPanel.getSelValue());
 			gameScreen.requestFocus();
 			gameScene = new Scene(gameScreen);
 			primaryStage.setScene(gameScene);
-			primaryStage.setTitle("PROG METH PROJECT-4 2016 ver. 7.00a");
+			primaryStage.setTitle("Mergit ver. 7.00a");
 			primaryStage.centerOnScreen();
 		} else {
 			primaryStage.setScene(optionScene);
